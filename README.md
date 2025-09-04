@@ -1,10 +1,10 @@
 Terraform Provider GitHub (Cased fork)
 =======================================
 
-This is a (currently) unofficial fork of `terraform-provider-github`.
+This is a fork of `terraform-provider-github`. It will be renamed shortly to remove confusion.
 
 Existing documentation for the GitHub provider can be found [here](https://registry.terraform.io/providers/integrations/github). 
-Future work will be on separate documentation.
+Future work will be on separate documentation, under that new name.
 
 Roadmap
 --------

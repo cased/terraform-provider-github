@@ -53,7 +53,7 @@ func TestAccProvider_parallel_requests_performance(t *testing.T) {
 
 		// Assert that parallel is actually faster
 		if parallelDuration >= serialDuration {
-			t.Errorf("Expected parallel requests to be faster. Serial: %v, Parallel: %v", 
+			t.Errorf("Expected parallel requests to be faster. Serial: %v, Parallel: %v",
 				serialDuration, parallelDuration)
 		}
 
@@ -133,7 +133,7 @@ func TestAccProvider_parallel_terraform_resources(t *testing.T) {
 	}
 
 	// Create multiple resources to test parallel performance
-	var configSerial = fmt.Sprintf(`
+	const configSerial = `
 provider "github" {
   parallel_requests = false
 }
@@ -145,16 +145,16 @@ data "github_repository" "test1" {
 
 data "github_repository" "test2" {
   name = "go"
-  owner = "golang"  
+  owner = "golang"
 }
 
 data "github_repository" "test3" {
   name = "kubernetes"
   owner = "kubernetes"
 }
-`)
+`
 
-	var configParallel = fmt.Sprintf(`
+	const configParallel = `
 provider "github" {
   parallel_requests = true
 }
@@ -166,14 +166,14 @@ data "github_repository" "test1" {
 
 data "github_repository" "test2" {
   name = "go"
-  owner = "golang"  
+  owner = "golang"
 }
 
 data "github_repository" "test3" {
   name = "kubernetes"
   owner = "kubernetes"
 }
-`)
+`
 
 	t.Run("serial performance", func(t *testing.T) {
 		start := time.Now()
