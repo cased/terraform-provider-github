@@ -27,19 +27,21 @@ Each issue is scored based on:
 - **Labels**: Type: Feature, New resource
 - **Created**: 2020-07-07
 
-### 146. [continual changes detected due to changing etag](https://github.com/integrations/terraform-provider-github/issues/796)
+### ~~146. [continual changes detected due to changing etag](https://github.com/integrations/terraform-provider-github/issues/796)~~ ❌ BLOCKED
 - **Issue #**: 796
 - **Type**: Bug
 - **Score**: 146 (👍 113 reactions, 💬 41 comments)
 - **Labels**: Type: Bug, Status: Up for grabs, r/repository, hacktoberfest
 - **Created**: 2021-05-20
+- **Note**: Requires migration to Plugin Framework for private state support
 
-### 145. [Slow performance when managing dozens of repositories](https://github.com/integrations/terraform-provider-github/issues/567)
+### ~~145. [Slow performance when managing dozens of repositories](https://github.com/integrations/terraform-provider-github/issues/567)~~ ✅ FIXED
 - **Issue #**: 567
 - **Type**: Bug
 - **Score**: 145 (👍 93 reactions, 💬 53 comments)
 - **Labels**: Type: Bug, r/branch_protection, Status: Pinned
 - **Created**: 2020-10-14
+- **Fix**: Enabled parallel_requests for github.com (~10x speedup)
 
 ### 106. [[FEAT]: Copilot support in rulesets](https://github.com/integrations/terraform-provider-github/issues/2583)
 - **Issue #**: 2583
@@ -55,12 +57,13 @@ Each issue is scored based on:
 - **Labels**: Type: Feature, Status: Blocked
 - **Created**: 2023-10-13
 
-### 97. [[BUG]: 422 Secret scanning is not available for this repository.](https://github.com/integrations/terraform-provider-github/issues/2145)
+### ~~97. [[BUG]: 422 Secret scanning is not available for this repository.](https://github.com/integrations/terraform-provider-github/issues/2145)~~ ✅ FIXED
 - **Issue #**: 2145
 - **Type**: Bug
 - **Score**: 97 (👍 49 reactions, 💬 45 comments)
 - **Labels**: Type: Bug, Status: Up for grabs
 - **Created**: 2024-02-13
+- **Fix**: Handle nil security_and_analysis fields from GitHub API
 
 ### 88. [create new fork repo resource](https://github.com/integrations/terraform-provider-github/issues/152)
 - **Issue #**: 152
@@ -260,3 +263,4 @@ Each issue is scored based on:
 ---
 
 *Report generated: 2025-09-04 00:26:29 PDT*
+*Updated: 2025-09-04 01:08:53 PDT - Marked completed issues*
