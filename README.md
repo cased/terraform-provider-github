@@ -11,6 +11,8 @@ Roadmap
 
 We'll be working through the long list of issues in [github/terraform-provider-github](https://github.com/integrations/terraform-provider-github) and prioritizing.
 
+We're focusing right now with the top issues identified by our rough metrics [here](https://github.com/cased/terraform-provider-github/blob/main/PRIORITY_ISSUES.md).
+
 
 Interest?
 ----------
