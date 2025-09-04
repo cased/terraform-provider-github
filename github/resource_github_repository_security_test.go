@@ -19,8 +19,8 @@ func TestFlattenSecurityAndAnalysis(t *testing.T) {
 			expected: []interface{}{},
 		},
 		{
-			name: "empty SecurityAndAnalysis returns empty",
-			input: &github.SecurityAndAnalysis{},
+			name:     "empty SecurityAndAnalysis returns empty",
+			input:    &github.SecurityAndAnalysis{},
 			expected: []interface{}{},
 		},
 		{
