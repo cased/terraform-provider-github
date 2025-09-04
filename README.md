@@ -1,29 +1,24 @@
-Terraform Provider GitHub
-=========================
+Terraform Provider GitHub (Cased fork)
+=======================================
 
-<img src="https://cloud.githubusercontent.com/assets/98681/24211275/c4ebd04e-0ee8-11e7-8606-061d656a42df.png" width="72" height="">
+This is a (currently) unofficial fork of `terraform-provider-github`.
 
-<img src="https://raw.githubusercontent.com/hashicorp/terraform-website/d841a1e5fca574416b5ca24306f85a0f4f41b36d/content/source/assets/images/logo-terraform-main.svg" width="300px">
+Existing documentation for the GitHub provider can be found [here](https://registry.terraform.io/providers/integrations/github). 
+Future work will be on separate documentation.
 
-This project is used to manipulate GitHub resources (repositories, teams, files, etc.) using Terraform. Its Terraform Registry page can be found [here](https://registry.terraform.io/providers/integrations/github/).
+Roadmap
+--------
 
-## Requirements
+We'll be working through the long list of issues in [github/terraform-provider-github](https://github.com/integrations/terraform-provider-github) and prioritizing.
 
--	[Terraform](https://www.terraform.io/downloads.html) 0.10.x
--	[Go](https://golang.org/doc/install) 1.19.x (to build the provider plugin)
 
-## Usage
+Interest?
+----------
 
-Detailed documentation for the GitHub provider can be found [here](https://registry.terraform.io/providers/integrations/github).
+If you'd like to help on this, feel free to fork and add your name + goals to HELP.md.
 
-## Contributing
+LICENSE
+--------
 
-Detailed documentation for contributing to the GitHub provider can be found [here](CONTRIBUTING.md).
+MIT
 
-## Roadmap
-
-This project uses [Milestones](https://github.com/integrations/terraform-provider-github/milestones) to scope upcoming features and bug fixes. Issues that receive the most recent discussion or the most reactions will be more likely to be included in an upcoming release.
-
-## Support
-
-GitHub Support does not provide support for this integration. This is a community-supported project. GitHub's SDK team triages issues and PRs periodically.
