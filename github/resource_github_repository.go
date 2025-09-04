@@ -1023,13 +1023,23 @@ func flattenSecurityAndAnalysis(securityAndAnalysis *github.SecurityAndAnalysis)
 		}}
 	}
 
-	securityAndAnalysisMap["secret_scanning"] = []interface{}{map[string]interface{}{
-		"status": securityAndAnalysis.GetSecretScanning().GetStatus(),
-	}}
+	secretScanning := securityAndAnalysis.GetSecretScanning()
+	if secretScanning != nil && secretScanning.Status != nil {
+		securityAndAnalysisMap["secret_scanning"] = []interface{}{map[string]interface{}{
+			"status": secretScanning.GetStatus(),
+		}}
+	}
 
-	securityAndAnalysisMap["secret_scanning_push_protection"] = []interface{}{map[string]interface{}{
-		"status": securityAndAnalysis.GetSecretScanningPushProtection().GetStatus(),
-	}}
+	secretScanningPushProtection := securityAndAnalysis.GetSecretScanningPushProtection()
+	if secretScanningPushProtection != nil && secretScanningPushProtection.Status != nil {
+		securityAndAnalysisMap["secret_scanning_push_protection"] = []interface{}{map[string]interface{}{
+			"status": secretScanningPushProtection.GetStatus(),
+		}}
+	}
+
+	if len(securityAndAnalysisMap) == 0 {
+		return []interface{}{}
+	}
 
 	return []interface{}{securityAndAnalysisMap}
 }
