@@ -778,14 +778,12 @@ func resourceGithubRepositoryUpdate(d *schema.ResourceData, meta interface{}) er
 	if d.HasChange("pages") && !d.IsNewResource() {
 		opts := expandPagesUpdate(d.Get("pages").([]interface{}))
 		if opts != nil {
-			pages, res, err := client.Repositories.GetPagesInfo(ctx, owner, repoName)
-			if res.StatusCode != http.StatusNotFound && err != nil {
-				return err
-			}
-
-			if pages == nil {
+			// First check if pages are enabled on the repository
+			if !repo.GetHasPages() {
+				// Pages not enabled yet, so enable them
 				_, _, err = client.Repositories.EnablePages(ctx, owner, repoName, &github.Pages{Source: opts.Source, BuildType: opts.BuildType})
 			} else {
+				// Pages already enabled, update them
 				_, err = client.Repositories.UpdatePages(ctx, owner, repoName, opts)
 			}
 			if err != nil {
