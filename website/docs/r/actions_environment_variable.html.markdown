@@ -14,6 +14,7 @@ You must have write access to a repository to use this resource.
 
 ```hcl
 resource "github_actions_environment_variable" "example_variable" {
+  repository        = "example_repository"
   environment       = "example_environment"
   variable_name     = "example_variable_name"
   value             = "example_variable_value"
