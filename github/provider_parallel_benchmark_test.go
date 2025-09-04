@@ -14,7 +14,7 @@ func BenchmarkProvider_ParallelRequests(b *testing.B) {
 	b.Run("Serial", func(b *testing.B) {
 		benchmarkRequests(b, false)
 	})
-	
+
 	b.Run("Parallel", func(b *testing.B) {
 		benchmarkRequests(b, true)
 	})
@@ -42,14 +42,14 @@ func benchmarkRequests(b *testing.B, parallel bool) {
 	}
 
 	b.ResetTimer()
-	
+
 	for i := 0; i < b.N; i++ {
 		// Reset counter
 		atomic.StoreInt32(&requestCount, 0)
-		
+
 		// Simulate multiple requests like Terraform would make
 		numRequests := 10
-		
+
 		if parallel {
 			var wg sync.WaitGroup
 			for j := 0; j < numRequests; j++ {
@@ -67,7 +67,7 @@ func benchmarkRequests(b *testing.B, parallel bool) {
 				client.Do(req)
 			}
 		}
-		
+
 		// Verify all requests were made
 		if int(atomic.LoadInt32(&requestCount)) != numRequests {
 			b.Errorf("Expected %d requests, got %d", numRequests, requestCount)
@@ -92,7 +92,7 @@ func TestProvider_ParallelRequestsSpeedup(t *testing.T) {
 	serialClient := &http.Client{
 		Transport: NewRateLimitTransport(http.DefaultTransport, WithParallelRequests(false)),
 	}
-	
+
 	serialStart := time.Now()
 	for i := 0; i < numRequests; i++ {
 		req, _ := http.NewRequest("GET", server.URL+"/repos/test/test", nil)
@@ -108,7 +108,7 @@ func TestProvider_ParallelRequestsSpeedup(t *testing.T) {
 	parallelClient := &http.Client{
 		Transport: NewRateLimitTransport(http.DefaultTransport, WithParallelRequests(true)),
 	}
-	
+
 	parallelStart := time.Now()
 	var wg sync.WaitGroup
 	for i := 0; i < numRequests; i++ {
@@ -130,7 +130,7 @@ func TestProvider_ParallelRequestsSpeedup(t *testing.T) {
 
 	// Calculate and verify speedup
 	speedup := float64(serialDuration) / float64(parallelDuration)
-	
+
 	t.Logf("Serial: %v for %d requests", serialDuration, numRequests)
 	t.Logf("Parallel: %v for %d requests", parallelDuration, numRequests)
 	t.Logf("Speedup: %.2fx", speedup)
@@ -139,17 +139,17 @@ func TestProvider_ParallelRequestsSpeedup(t *testing.T) {
 	// Serial should take ~1000ms (10 * 100ms)
 	// Parallel should take ~100ms (all concurrent)
 	// Expect at least 5x speedup
-	
+
 	if speedup < 5.0 {
 		t.Errorf("Expected at least 5x speedup with parallel requests, got %.2fx", speedup)
 	}
-	
+
 	// Verify serial took approximately the expected time (with some tolerance)
 	expectedSerial := time.Duration(numRequests) * 100 * time.Millisecond
 	if serialDuration < expectedSerial*8/10 || serialDuration > expectedSerial*12/10 {
 		t.Errorf("Serial duration %v outside expected range around %v", serialDuration, expectedSerial)
 	}
-	
+
 	// Verify parallel took approximately 100ms (with some tolerance)
 	expectedParallel := 100 * time.Millisecond
 	if parallelDuration < expectedParallel*5/10 || parallelDuration > expectedParallel*20/10 {

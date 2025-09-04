@@ -53,7 +53,7 @@ func TestAccProvider_parallel_requests_performance(t *testing.T) {
 
 		// Assert that parallel is actually faster
 		if parallelDuration >= serialDuration {
-			t.Errorf("Expected parallel requests to be faster. Serial: %v, Parallel: %v", 
+			t.Errorf("Expected parallel requests to be faster. Serial: %v, Parallel: %v",
 				serialDuration, parallelDuration)
 		}
 
